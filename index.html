@@ -621,21 +621,7 @@
             </div>
             <div class="form-group">
               <label for="time">Preferred Time *</label>
-              <select id="time" name="time" required>
-                <option value="">Select Time</option>
-                <option value="9:00 AM">9:00 AM</option>
-                <option value="10:00 AM">10:00 AM</option>
-                <option value="11:00 AM">11:00 AM</option>
-                <option value="12:00 PM">12:00 PM</option>
-                <option value="1:00 PM">1:00 PM</option>
-                <option value="2:00 PM">2:00 PM</option>
-                <option value="3:00 PM">3:00 PM</option>
-                <option value="4:00 PM">4:00 PM</option>
-                <option value="5:00 PM">5:00 PM</option>
-                <option value="6:00 PM">6:00 PM</option>
-                <option value="7:00 PM">7:00 PM</option>
-                <option value="8:00 PM">8:00 PM</option>
-              </select>
+              <input type="time" id="time" name="time" min="09:00" max="22:00" required>
             </div>
           </div>
 
@@ -819,9 +805,13 @@
       // Booking form functions
       function showBookingForm() {
         document.getElementById('bookingForm').classList.add('active');
-        // Set minimum date to today
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('date').min = today;
+        // Set minimum date to today and maximum date to 30 days from now
+        const today = new Date();
+        const maxDate = new Date();
+        maxDate.setDate(today.getDate() + 30);
+        
+        document.getElementById('date').min = today.toISOString().split('T')[0];
+        document.getElementById('date').max = maxDate.toISOString().split('T')[0];
       }
 
       function hideBookingForm() {
