@@ -366,6 +366,119 @@
         background: transparent;
       }
 
+      /* Gallery Section */
+      #gallery {
+        background: linear-gradient(135deg, #f0f8f0 0%, #e8f5e8 100%);
+      }
+
+      .gallery-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 0;
+      }
+
+      .gallery-item {
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        transition: all 0.4s ease;
+        background: white;
+        cursor: pointer;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: all 0.4s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .gallery-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        color: white;
+        padding: 30px 20px 20px;
+        transform: translateY(100%);
+        transition: all 0.4s ease;
+      }
+
+      .gallery-item:hover .gallery-overlay {
+        transform: translateY(0);
+      }
+
+      .gallery-overlay h4 {
+        margin: 0 0 10px 0;
+        font-size: 1.3rem;
+        font-weight: 500;
+      }
+
+      .gallery-overlay p {
+        margin: 0;
+        font-size: 0.9rem;
+        opacity: 0.9;
+      }
+
+      /* Modal for full-size image display */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.9);
+        backdrop-filter: blur(5px);
+      }
+
+      .modal-content {
+        margin: auto;
+        display: block;
+        width: 90%;
+        max-width: 800px;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: 10px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 35px;
+        color: #fff;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 2001;
+      }
+
+      .modal-close:hover {
+        color: #6B73FF;
+        transform: scale(1.1);
+      }
+
       /* Service Box and Review Card */
       .service-box, .review-card {
         background: white;
@@ -511,6 +624,26 @@
           width: 100%;
           max-width: 400px;
         }
+
+        .gallery-container {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          padding: 10px;
+        }
+
+        .gallery-item {
+          max-width: 100%;
+        }
+
+        .modal-content {
+          width: 95%;
+        }
+
+        .modal-close {
+          top: 10px;
+          right: 20px;
+          font-size: 30px;
+        }
       }
 
       @media (max-width: 480px) {
@@ -547,6 +680,7 @@
     <nav>
       <ul>
         <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#specials">Specials</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -720,181 +854,17 @@
       </div>
     </section>
 
-    <!-- Specials Section -->
-    <section id="specials">
-      <h2>Add-On Services</h2>
-      <h4>Enhance your massage experience</h4>
-      <div class="services">
-        <div class="service-box">
-          <h3>Hot Stone Add-On</h3>
-          <p>
-            Add smooth, heated stones to any massage service for deeper muscle relaxation and enhanced therapeutic benefits.
-          </p>
-          <div class="price-wrapper">
-            <h4>Add to any service: +$10</h4>
+    <!-- Gallery Section -->
+    <section id="gallery">
+      <h2>Our Spa Environment</h2>
+      <h4>Experience the tranquil atmosphere at King Foot Massage</h4>
+      <div class="gallery-container">
+        <div class="gallery-item" onclick="openModal('1.jpg', 'Relaxation Room', 'Peaceful massage room designed for your ultimate comfort and tranquility')">
+          <img src="1.jpg" alt="Relaxation Room" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Relaxation Room</h4>
+            <p>Peaceful massage room designed for your ultimate comfort</p>
           </div>
         </div>
 
-        <div class="service-box">
-          <h3>Essential Oil Add-On</h3>
-          <p>
-            Enhance your massage with carefully selected essential oils for aromatherapy benefits and a more luxurious experience.
-          </p>
-          <div class="price-wrapper">
-            <h4>Add to any service: +$10</h4>
-          </div>
-        </div>
-
-        <div class="service-box">
-          <h3>CBD Oil/Cream Add-On</h3>
-          <p>
-            Experience the potential therapeutic benefits of CBD with our premium CBD oil or cream application during your massage.
-          </p>
-          <div class="price-wrapper">
-            <h4>Add to any service: +$10</h4>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-      <h2>Visit King Foot Massage</h2>
-      <div class="appointment-card">
-        <div class="appointment-map">
-          <div class="appointment-info">
-            <p>
-              <strong>📞 Call to Schedule:</strong>
-              <a href="tel:+1-469-639-0889">469-639-0889</a>
-            </p>
-            <p>
-              <strong>📍 Our Location:</strong>
-              <a href="https://maps.google.com/?q=5834+Abrams+Road+Dallas+TX+75214" target="_blank">
-                5834 Abrams Road, Dallas, TX 75214
-              </a>
-            </p>
-            <p><strong>🕐 Hours:</strong> Open Everyday 9:00am - 10:00pm</p>
-          </div>
-          <h3>🎁 Walk-ins welcome - Call ahead for guaranteed availability!</h3>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <p>&copy; 2025 King Foot Massage. All Rights Reserved.</p>
-    </footer>
-
-    <script>
-      // Service box interaction
-      document.querySelectorAll('.service-box').forEach(box => {
-        const priceWrapper = box.querySelector('.price-wrapper');
-        const descriptionText = box.querySelector('p');
-
-        box.addEventListener('mouseenter', () => {
-          priceWrapper.style.display = 'block';
-          descriptionText.style.display = 'none';
-        });
-
-        box.addEventListener('mouseleave', () => {
-          priceWrapper.style.display = 'none';
-          descriptionText.style.display = '';
-        });
-      });
-
-      // Booking form functions
-      function showBookingForm() {
-        document.getElementById('bookingForm').classList.add('active');
-        // Set minimum date to today and maximum date to 30 days from now
-        const today = new Date();
-        const maxDate = new Date();
-        maxDate.setDate(today.getDate() + 30);
-        
-        document.getElementById('date').min = today.toISOString().split('T')[0];
-        document.getElementById('date').max = maxDate.toISOString().split('T')[0];
-      }
-
-      function hideBookingForm() {
-        document.getElementById('bookingForm').classList.remove('active');
-      }
-
-      function submitBooking(event) {
-        event.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(event.target);
-        const bookingData = {
-          firstName: formData.get('firstName'),
-          lastName: formData.get('lastName'),
-          phone: formData.get('phone'),
-          email: formData.get('email'),
-          people: formData.get('people'),
-          date: formData.get('date'),
-          time: formData.get('time'),
-          service: formData.get('service'),
-          addons: formData.getAll('addons'),
-          notes: formData.get('notes')
-        };
-
-        // Show confirmation message
-        let confirmMessage = `Thank you ${bookingData.firstName}! Your massage appointment request has been submitted for ${bookingData.people} ${bookingData.people === '1' ? 'person' : 'people'} on ${bookingData.date} at ${bookingData.time}.`;
-        if (bookingData.service) {
-          confirmMessage += `\nService: ${bookingData.service}`;
-        }
-        if (bookingData.addons && bookingData.addons.length > 0) {
-          confirmMessage += `\nAdd-ons: ${bookingData.addons.join(', ')}`;
-        }
-        confirmMessage += `\n\nWe'll contact you at ${bookingData.phone} within 30 minutes to confirm your visit to King Foot Massage.`;
-        
-        alert(confirmMessage);
-        
-        // Reset form and hide
-        event.target.reset();
-        hideBookingForm();
-      }
-
-      // Close form when clicking outside
-      document.addEventListener('click', function(event) {
-        const bookingForm = document.getElementById('bookingForm');
-        const bookButton = document.querySelector('.book-button');
-        
-        if (bookingForm.classList.contains('active') && 
-            !bookingForm.contains(event.target) && 
-            !bookButton.contains(event.target)) {
-          hideBookingForm();
-        }
-      });
-
-      // Smooth scrolling for navigation links
-      document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href').substring(1);
-          const targetElement = document.getElementById(targetId);
-          if (targetElement) {
-            targetElement.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        });
-      });
-
-      // Add some floating animation to service boxes
-      document.querySelectorAll('.service-box').forEach((box, index) => {
-        box.style.animationDelay = `${index * 0.1}s`;
-        box.style.animation = 'float 3s ease-in-out infinite';
-      });
-
-      // Add floating animation keyframes
-      const style = document.createElement('style');
-      style.textContent = `
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-5px); }
-        }
-      `;
-      document.head.appendChild(style);
-    </script>
-  </body>
-</html>
+        <div class="gallery-item" onclick="openModal('2.jpg', 'Treatment Suite', '
