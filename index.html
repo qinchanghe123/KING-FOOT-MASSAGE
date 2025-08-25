@@ -867,4 +867,34 @@
           </div>
         </div>
 
-        <div class="gallery-item" onclick="openModal('2.jpg', 'Treatment Suite', '
+        <div class="gallery-item" onclick="openModal('2.jpg', 'Treatment Suite', 'Professional treatment space with premium amenities and soothing ambiance')">
+          <img src="2.jpg" alt="Treatment Suite" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Treatment Suite</h4>
+            <p>Professional treatment space with premium amenities</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openModal('3.jpg', 'Spa Interior', 'Elegant and serene spa interior designed for maximum relaxation')">
+          <img src="3.jpg" alt="Spa Interior" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Spa Interior</h4>
+            <p>Elegant and serene spa interior designed for relaxation</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openModal('4.jpg', 'Reception Area', 'Welcoming reception area where your journey to relaxation begins')">
+          <img src="4.jpg" alt="Reception Area" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Reception Area</h4>
+            <p>Welcoming space where your relaxation journey begins</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal for displaying full-size images -->
+      <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+      </div>
+    </section>
